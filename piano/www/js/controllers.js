@@ -34,8 +34,9 @@ angular.module('starter.controllers', [])
     $scope.Reproducir = function(){
         $scope.melodia.forEach(function(item, index){
             try{
-                window.plugins.NativeAudio.play(item);
-                $timeout(2000);
+                $timeout(function(){
+                  window.plugins.NativeAudio.play(item);
+                },2000);
             }
             catch (err){
             console.log(item);
