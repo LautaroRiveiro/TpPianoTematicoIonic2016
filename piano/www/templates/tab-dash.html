@@ -1,17 +1,61 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
+    
+    <h2>AO Piano</h2>
     <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
+        Para comenzar a grabar, hacé click en GRABAR. Cuando finalices, hacé click en PARAR. Para reproducir, hacé click en PLAY.
     </p>
     <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
+       Si te gustó, podés guardar tu melodía haciendo click en GUARDAR. Si no, podés borrarla y empezar una nueva!.
     </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
+    
+    <table style="width: 80%; margin: auto;">
+        <tr>
+            <td ng-click="Tocar('lobo')"><img src="img/lobo.png" alt=""></td>
+            <td ng-click="Tocar('manzana')"><img src="img/manzana.BMP" alt=""></td>
+            <td ng-click="Tocar('inmo')"><img src="img/inmo.png" alt=""></td>
+        </tr>
+        <tr>
+            <td ng-click="Tocar('muerte')"><img src="img/muerte.png" alt=""></td>
+            <td ng-click="Tocar('murcielago')"><img src="img/murcielago.png" alt=""></td>
+            <td ng-click="Tocar('pollo')"><img src="img/pollo.png" alt=""></td>
+        </tr>
+        <tr>
+            <td ng-click="Tocar('portal')"><img src="img/portal.png" alt=""></td>
+            <td ng-click="Tocar('puerta')"><img src="img/puerta.png" alt=""></td>
+            <td ng-click="Tocar('serpiente')"><img src="img/serpiente.png" alt=""></td>
+        </tr>
+    </table>
+    
+    <button ng-show="grabar" class="button button-block button-assertive" ng-click="Grabar()"> GRABAR </button>
+    
+    <button ng-show="parar" class="button button-block button-positive" ng-click="Parar()"> PARAR </button>
+    
+    <button ng-show="reproducir" class="button button-block button-calm" ng-click="Reproducir()"> PLAY </button>
+    
+    <div>{{melodia}}</div>
+    
+    <button ng-show="reproducir" class="button button-block button-royal" ng-click="Borrar()"> BORRAR </button>
+    
+    <button ng-show="reproducir" class="button button-block button-balanced" ng-click="Guardar()"> GUARDAR </button>
+    
+    <!--- Me "apila" los botones:
+    <div class="row" style="width: 30%; margin: auto;">
+        <div class="col col-33 col-offset-10" ng-click="Tocar('lobo')"><img src="img/lobo.png" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('manzana')"><img src="img/manzana.BMP" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('inmo')"><img src="img/inmo.png" alt=""></div>
+    </div>
+    <div class="row" style="width: 30%; margin: auto;">
+        <div class="col col-33 col-offset-10" ng-click="Tocar('muerte')"><img src="img/muerte.png" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('murcielago')"><img src="img/murcielago.png" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('pollo')"><img src="img/pollo.png" alt=""></div>
+    </div>
+    <div class="row" style="width: 30%; margin: auto;">
+        <div class="col col-33 col-offset-10" ng-click="Tocar('portal')"><img src="img/portal.png" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('puerta')"><img src="img/puerta.png" alt=""></div>
+        <div class="col col-33 col-offset-10" ng-click="Tocar('serpiente')"><img src="img/serpiente.png" alt=""></div>
+    </div>
+    --->
+
   </ion-content>
 </ion-view>

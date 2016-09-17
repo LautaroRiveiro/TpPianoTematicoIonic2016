@@ -11,6 +11,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+      
+    if( window.plugins && window.plugins.NativeAudio ) {
+      window.plugins.NativeAudio.preloadSimple( 'lobo', 'audio/lobo.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'manzana', 'audio/manzana.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'inmo', 'audio/inmo.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'muerte', 'audio/muerte.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'murcielago', 'audio/murcielago.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'pollo', 'audio/pollo.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'portal', 'audio/portal.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'puerta', 'audio/puerta.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+      window.plugins.NativeAudio.preloadSimple( 'serpiente', 'audio/serpiente.mp3', function(msg){
+      }, function(msg){
+          console.log( 'error: ' + msg );
+      });
+    }
+      
+      
   });
 })
 
@@ -36,25 +77,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
 
   .state('tab.account', {
     url: '/account',

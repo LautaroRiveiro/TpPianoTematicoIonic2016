@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+td > img
+{
+    width: 100px;
+    height: 100px;
+}
+
+div > img
+{
+    width: 100px;
+    height: 100px;
+}
