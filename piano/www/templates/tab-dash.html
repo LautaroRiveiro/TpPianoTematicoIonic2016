@@ -27,17 +27,19 @@
         </tr>
     </table>
     
+    <div>{{melodia}}</div>
+    
     <button ng-show="grabar" class="button button-block button-assertive" ng-click="Grabar()"> GRABAR </button>
     
     <button ng-show="parar" class="button button-block button-positive" ng-click="Parar()"> PARAR </button>
     
     <button ng-show="reproducir" class="button button-block button-calm" ng-click="Reproducir()"> PLAY </button>
-    
-    <div>{{melodia}}</div>
-    
+        
     <button ng-show="reproducir" class="button button-block button-royal" ng-click="Borrar()"> BORRAR </button>
     
     <button ng-show="reproducir" class="button button-block button-balanced" ng-click="Guardar()"> GUARDAR </button>
+    
+    <button class="button button-block button-balanced" ng-click="LeerTxt()"> LEER TXT </button>
     
     <!--- Me "apila" los botones:
     <div class="row" style="width: 30%; margin: auto;">
