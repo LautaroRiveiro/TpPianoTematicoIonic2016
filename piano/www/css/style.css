@@ -10,3 +10,9 @@ div > img
     width: 100px;
     height: 100px;
 }
+.contenido-inicio,  .contenido-inicio>p {
+    text-align: justify;
+}
+.contenido-inicio>h2 {
+    text-align: left;
+}
