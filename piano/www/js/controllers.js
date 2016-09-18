@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $cordovaVibration, $cordovaNativeAudio, $timeout, $cordovaFile) {
-
+.controller('DashCtrl', function($scope, $stateParams, $state, $cordovaVibration, $cordovaNativeAudio, $timeout, $cordovaFile) {
+    console.log($stateParams);
     document.addEventListener("deviceready", onDeviceReady, false);
     
     function onDeviceReady() {
@@ -150,7 +150,18 @@ angular.module('starter.controllers', [])
 
 
 .controller('LoginCtrl', function($scope, $state) {
-    $scope.Ir = function(){
-         $state.go('tab.dash');  
+    $scope.usuario = {};
+    $scope.usuario.nombre = "";
+   
+    $scope.$watch('usuario.nombre', function(newVal, oldVal){
+        console.log('changed');
+    });
+    
+    
+    
+    
+    $scope.Ingresar = function(){
+        console.log($scope.usuario.nombre);
+        $state.go('tab.dash', {usuario: $scope.usuario});
     }
 });

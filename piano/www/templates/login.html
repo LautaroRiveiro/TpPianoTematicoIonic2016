@@ -1,6 +1,18 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<button ng-click="Ir()">IR</button>
+<ion-view view-title="Bienvenido">
+    <ion-content>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <span class="input-label">Usuario</span>
+          <input type="text" ng-model="usuario.nombre">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-balanced" ng-click="Ingresar(usuario)"> INGRESAR </button>
+        <!-- <h2>{{usuario.nombre}}</h2> -->
+         <p class="text-center">
+          <a href="#/forgot-password">Forgot password</a>
+        </p>
+      </div>
+    </ion-content>
+
+</ion-view>
