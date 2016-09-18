@@ -139,9 +139,6 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
-    
-    
-
 })
 
 
@@ -149,4 +146,11 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+
+.controller('LoginCtrl', function($scope, $state) {
+    $scope.Ir = function(){
+         $state.go('tab.dash');  
+    }
 });

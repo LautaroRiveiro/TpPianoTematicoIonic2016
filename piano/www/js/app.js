@@ -6,8 +6,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
+    
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
@@ -85,7 +85,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   });
+  
+  $stateProvider.state('login', {
+      url: '/login',
+      abstract: false,
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+  });
 
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/login');
 
 });
