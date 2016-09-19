@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
     
     function onDeviceReady() {
         //En vez de crearlo, lo sobreescribo para que cada vez que inicie el juego no me esté trayendo las pruebas anteriores. Es a los fines prácticos. Después tendría que cambiarlo.
-        $cordovaFile.writeFile(cordova.file.dataDirectory, "melodias.txt", "", true)
+        $cordovaFile.writeFile(cordova.file.dataDirectory, "melodias.txt", '{autor:"Lautaro", nombre:"ejemplo", melodia:[]}', true)
         .then(function (success) {
             console.log(success);
         }, function (error) {
@@ -73,9 +73,10 @@ angular.module('starter.controllers', [])
         //alert(nombre);
         
         //EVALUAR QUE NO EXISTA
-        
-        //GUARDAR EN ARCHIVO        
-        var melodiaAGuardar = ', '+nombre+': "'+$scope.melodia.toString()+'"';
+
+        //GUARDAR EN ARCHIVO
+        var melodiastring = "'" + $scope.melodia.join("','") + "'";
+        var melodiaAGuardar = ',{autor:"'+nombre+'", nombre:"'+nombre+'", melodia:['+melodiastring+']}';
         $cordovaFile.writeExistingFile(cordova.file.dataDirectory, "melodias.txt", melodiaAGuardar)
           .then(function (success) {
             // success
@@ -135,18 +136,15 @@ angular.module('starter.controllers', [])
 })
 
 .controller('MelodiasCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  //$scope.$on('$ionicView.enter', function(e) {});
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+
 })
 
 
