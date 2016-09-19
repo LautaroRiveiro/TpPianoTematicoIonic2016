@@ -75,7 +75,7 @@ angular.module('starter.controllers', [])
         //EVALUAR QUE NO EXISTA
 
         //GUARDAR EN ARCHIVO
-        var melodiastring = "'" + $scope.melodia.join("','") + "'";
+        var melodiastring = '"' + $scope.melodia.join('","') + '"';
         var melodiaAGuardar = ',{autor:"'+nombre+'", nombre:"'+nombre+'", melodia:['+melodiastring+']}';
         $cordovaFile.writeExistingFile(cordova.file.dataDirectory, "melodias.txt", melodiaAGuardar)
           .then(function (success) {
@@ -135,7 +135,7 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('MelodiasCtrl', function($scope, Chats) {
+.controller('MelodiasCtrl', function($scope, Chats, $cordovaFile) {
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {});
@@ -144,6 +144,38 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        //En vez de crearlo, lo sobreescribo para que cada vez que inicie el juego no me esté trayendo las pruebas anteriores. Es a los fines prácticos. Después tendría que cambiarlo.
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+             // success
+              alert(success);
+             $scope.melodias = (new Function("return [" + success+ "];")());
+             alert($scope.melodias);
+         }, function (error) {
+             // error
+             alert(error);
+             alert("Read Mal");
+         });
+    }
+  // $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+  //           // success
+  //            alert(success);
+  //           $scope.melodias = (new Function("return [" + success+ "];")());
+  //           alert($scope.melodias);
+  //       }, function (error) {
+  //           // error
+  //           alert(error);
+  //           alert("Read Mal");
+  //       });
+
+
+
+
+
+
+
 
 })
 
