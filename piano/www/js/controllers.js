@@ -135,48 +135,29 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('MelodiasCtrl', function($scope, Chats, $cordovaFile) {
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {});
+.controller('MelodiasCtrl', function($scope, $cordovaFile) {
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-
+    //CREO, que acá leo el .txt la primera vez que entro.
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
-        //En vez de crearlo, lo sobreescribo para que cada vez que inicie el juego no me esté trayendo las pruebas anteriores. Es a los fines prácticos. Después tendría que cambiarlo.
         $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
-             // success
-              alert(success);
-             $scope.melodias = (new Function("return [" + success+ "];")());
-             alert($scope.melodias);
-         }, function (error) {
-             // error
-             alert(error);
-             alert("Read Mal");
-         });
+            $scope.melodias = (new Function("return [" + success+ "];")());
+        }, function (error) {
+            alert("Error: "+error);
+            alert("Read Mal");
+        });
     }
-  // $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
-  //           // success
-  //            alert(success);
-  //           $scope.melodias = (new Function("return [" + success+ "];")());
-  //           alert($scope.melodias);
-  //       }, function (error) {
-  //           // error
-  //           alert(error);
-  //           alert("Read Mal");
-  //       });
 
-
-
-
-
-
-
-
+    //CREO, que acá leo el .txt cada vez que vuelvo a entrar.
+    $scope.$on('$ionicView.enter', function(e) {
+        console.log(e); //Qué contendrá "e"?
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            $scope.melodias = (new Function("return [" + success+ "];")());
+        }, function (error) {
+            alert("Error: "+error);
+            alert("Read Mal");
+        });
+    });
 })
 
 
