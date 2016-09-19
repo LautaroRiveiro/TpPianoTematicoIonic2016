@@ -34,6 +34,7 @@ angular.module('starter.controllers', [])
     $scope.Grabar = function(){
         $scope.parar = true;
         $scope.grabar = false;
+        $scope.reproducir = false;
         $scope.melodia = [];
         i=0;
     }
@@ -41,6 +42,7 @@ angular.module('starter.controllers', [])
     $scope.Parar = function(){
         $scope.parar = false;
         $scope.reproducir = true;
+        $scope.borraryguardar = true;
     }
     
     $scope.Reproducir = function(){
@@ -62,6 +64,7 @@ angular.module('starter.controllers', [])
         $scope.grabar = true;
         $scope.parar = false;
         $scope.reproducir = false;
+        $scope.borraryguardar = false;
     }
     
     $scope.Guardar = function(){
@@ -81,6 +84,11 @@ angular.module('starter.controllers', [])
             alert(error);
             alert("WriteFileEx Mal");
         });
+
+        //Inhabilito GUARDAR y BORRAR, y habilito GRABAR
+        $scope.grabar = true;
+        $scope.borraryguardar = false;
+
         
     };
     
@@ -126,7 +134,7 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('MelodiasCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
