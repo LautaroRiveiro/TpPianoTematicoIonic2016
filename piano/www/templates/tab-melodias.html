@@ -1,15 +1,10 @@
 <ion-view view-title="Melodías">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="(key, melodia) in melodias" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{key}}</h2>
-        <p>{{melodia.autor}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
+      <ion-item class="item item-button-left" ng-repeat="(key, melodia) in melodias">
+        <button class="button icon ion-play assertive" ng-click="Reproducir(melodia.melodia)"></button>
+        <h2>{{key}} - {{melodia.nombre}}</h2>
+        <p>Autor: {{melodia.autor}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

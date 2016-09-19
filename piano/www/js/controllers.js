@@ -158,6 +158,17 @@ angular.module('starter.controllers', [])
             alert("Read Mal");
         });
     });
+
+    $scope.Reproducir = function(melodia){
+        angular.forEach(melodia, function(value, key) {
+            try{
+                window.plugins.NativeAudio.play(value);
+            }
+            catch (err){
+                console.log(err, value);
+            }
+        });
+    };
 })
 
 
