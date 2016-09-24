@@ -46,17 +46,21 @@ angular.module('starter.controllers', [])
     }
     
     $scope.Reproducir = function(){
+        var retraso = 0;
         angular.forEach($scope.melodia, function(value, key) {
-            $timeout(function(){
-                try{
+            try{
+                $timeout(function(){
                     window.plugins.NativeAudio.play(value);
-                }
-                catch (err){
-                    console.log(err, value);
-                }
-            },2000);
-        });  
+                },retraso);
+            }
+            catch (err){
+                console.log(err, value);
+            }
+            //Le asigno un timeout variable, para que cada play se ejecute con un delay distinto y no se pisen (gracias Euge!)
+            retraso += 1400; //1,4 segundos      
+        });
     }
+
     
     $scope.Borrar = function(){
         $scope.melodia = [];
@@ -135,7 +139,7 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('MelodiasCtrl', function($scope, $cordovaFile) {
+.controller('MelodiasCtrl', function($scope, $cordovaFile, $timeout) {
 
     //CREO, que acá leo el .txt la primera vez que entro.
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -160,13 +164,17 @@ angular.module('starter.controllers', [])
     });
 
     $scope.Reproducir = function(melodia){
+        var retraso = 0;
         angular.forEach(melodia, function(value, key) {
             try{
-                window.plugins.NativeAudio.play(value);
+                $timeout(function() {
+                    window.plugins.NativeAudio.play(value);    
+                }, retraso);
             }
             catch (err){
                 console.log(err, value);
             }
+            retraso += 1400;
         });
     };
 })
